@@ -51,9 +51,12 @@ public class PetDAOJpaImpl implements PetDAO {
 	}
 
 	@Override
-	public Pet modifyPet(int id) {
+	public Pet modifyPet(int id ,Pet pet) {
+		Pet mod = em.find(Pet.class, id);
+		mod.setHealth(pet.getHealth());
 		
-		return null;
+		
+		return mod;
 	}
 
 }

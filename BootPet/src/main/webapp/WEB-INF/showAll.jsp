@@ -15,7 +15,9 @@
 <title>Full List</title>
 </head>
 <body>
-	<h6><a href="/">Home</a></h6>
+	<h6>
+		<a href="/">Home</a>
+	</h6>
 
 	<c:choose>
 		<c:when test="${! empty pet}">
@@ -28,12 +30,15 @@
 			<p>No pets found</p>
 		</c:otherwise>
 	</c:choose>
-	
+
 	<form action="delete.do" method="GET">
 		<input type="number" name="pets" placeholder="enter pet #"
-			required="required" /> <input type="submit"
-			value="delete" />
-			</form>
+			required="required" /> <input type="submit" value="delete" />
+	</form>
+	<form action="mod.do" method="GET">
+		<input type="number" name="modify" placeholder="enter pet #"
+			required="required" /> <input type="submit" value="modify" />
+	</form>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

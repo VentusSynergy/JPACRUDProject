@@ -14,6 +14,6 @@ public interface PetDAO {
 
 	boolean deletePet(int id);
 
-	Pet modifyPet(int id);
+	Pet modifyPet(int id, Pet pet);
 
 }

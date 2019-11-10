@@ -21,7 +21,6 @@ public class PetController {
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String index() {
-		System.out.println("start");
 		return "/WEB-INF/index.jsp";
 	}
 
@@ -37,47 +36,59 @@ public class PetController {
 	@RequestMapping(path = "showPet.do", method = RequestMethod.GET)
 	public ModelAndView getPet(@RequestParam("pets") int pet) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(pet);
 		Pet search = dao.findById(pet);
 
-		mv.addObject("pet",search);
+		mv.addObject("pet", search);
 		mv.setViewName("WEB-INF/description.jsp");
 		return mv;
 	}
+
 	@RequestMapping(path = "createPetPage.do", method = RequestMethod.GET)
 	public String addPage() {
-		
+
 		return "/WEB-INF/create.jsp";
 	}
-	
+
 	@RequestMapping(path = "createPet.do", method = RequestMethod.GET)
 	public ModelAndView creation(Pet insert) {
 		ModelAndView mv = new ModelAndView();
 		Pet pet = dao.newPet(insert);
-		
+
 		mv.addObject("pet", pet);
 		mv.setViewName("/");
-		
-		
+
 		return mv;
 	}
+
 	@RequestMapping(path = "delete.do", method = RequestMethod.GET)
-	public ModelAndView deletion(@RequestParam("pets")int id) {
+	public ModelAndView deletion(@RequestParam("pets") int id) {
 		ModelAndView mv = new ModelAndView();
 		boolean result = dao.deletePet(id);
 		mv.addObject(result);
 		mv.setViewName("/");
-		
+
 		return mv;
-		
+
 	}
-	
-	@RequestMapping(path = "change.do", method = RequestMethod.POST)
-	public ModelAndView modify(@RequestParam("pets")int id) {
+
+	@RequestMapping(path = "change.do", method = RequestMethod.GET)
+	public ModelAndView modify(Pet pet) {
+		int val = pet.getId();
 		ModelAndView mv = new ModelAndView();
-		
-		
-		
+		Pet update = dao.modifyPet(val, pet);
+		mv.addObject("update", update);
+		mv.setViewName("/");
+
+		return mv;
+	}
+
+	@RequestMapping(path = "mod.do", method = RequestMethod.GET)
+	public ModelAndView modPet(@RequestParam("modify") int pet) {
+		ModelAndView mv = new ModelAndView();
+		Pet search = dao.findById(pet);
+
+		mv.addObject("pet", search);
+		mv.setViewName("WEB-INF/modify.jsp");
 		return mv;
 	}
 

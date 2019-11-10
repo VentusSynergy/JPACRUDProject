@@ -13,6 +13,8 @@
 <title>Add Pet</title>
 </head>
 <body>
+	<a href="/">Home</a>
+
 	<h5>New Pet</h5>
 	<form action="createPet.do" method="GET">
 		Pet Name: <input type="text" name="name" placeholder="enter name"
