@@ -25,6 +25,21 @@ public class Pet {
 	public Pet() {
 		super();
 	}
+	
+
+	public Pet(String name, String species, int age, String state, String description, String gender, String color,
+			String health) {
+		super();
+		this.name = name;
+		this.species = species;
+		this.age = age;
+		this.state = state;
+		this.description = description;
+		this.gender = gender;
+		this.color = color;
+		this.health = health;
+	}
+
 
 	public int getId() {
 		return id;

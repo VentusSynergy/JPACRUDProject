@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +12,28 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<title>Insert title here</title>
+<title>Full List</title>
 </head>
 <body>
+	<h6><a href="/">Home</a></h6>
 
+	<c:choose>
+		<c:when test="${! empty pet}">
+			<c:forEach items="${pet}" var="pet">
+				<a href="showPet.do?pets=${pet.id}"><em> ${pet.name}</em></a>
+				<hr>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+			<p>No pets found</p>
+		</c:otherwise>
+	</c:choose>
+	
+	<form action="delete.do" method="GET">
+		<input type="number" name="pets" placeholder="enter pet #"
+			required="required" /> <input type="submit"
+			value="delete" />
+			</form>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

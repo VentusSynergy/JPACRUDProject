@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,25 +12,44 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<title>Home</title>
+<title>Pet description</title>
 </head>
 <body>
-	<h6>
-		<a href="/">Home</a>
-	</h6>
+			<a href="/">Home</a>
+<c:choose>
+<c:when test="${! empty pet}">
+	<div>
+		<h6>
+		</h6>
+		<h5>${pet.name}</h5>
+		<p>
+			Assigned ID #: <br>${pet.id}
+		<p>
+		<p>
+			Species: <br>${pet.species}
+		<p>
+			Age: <br>${pet.age}</p>
+		</p>
+		<p>
+			Gender: <br>${pet.gender}</p>
+		<p>
+			Color: <br>${pet.color}
+		</p>
+		<p>
+			Location: <br>${pet.state}</p>
+		<p>
+			Health: <br>${pet.health}
+		</p>
+		<p>
+			Description: <br>${pet.description}
+		</p>
+	</div>
 
-	<form action="showPet.do" method="GET">
-		<input type="number" name="pets" placeholder="enter film ID"
-			required="required" /> <input type="submit"
-			value="View Pet" /> <br> <br>
-
-
-
-	</form>
-	<a href="showAll.do"><em> View all </em></a>
-	<a href="createPetPage.do"><em> Add pet </em></a>
-
-
+		</c:when>
+		<c:otherwise>
+			<p>No pets found</p>
+		</c:otherwise>
+		</c:choose>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

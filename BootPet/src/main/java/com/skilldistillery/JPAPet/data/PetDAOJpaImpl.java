@@ -19,6 +19,7 @@ public class PetDAOJpaImpl implements PetDAO {
 	@Override
 	public Pet findById(int id) {
 		return em.find(Pet.class, id);
+
 	}
 
 	@Override
@@ -27,6 +28,32 @@ public class PetDAOJpaImpl implements PetDAO {
 		List<Pet> result = em.createQuery(sqlText, Pet.class).getResultList();
 		return result;
 	}
-	
+
+	@Override
+	public Pet newPet(Pet pet) {
+		em.persist(pet);
+        em.flush();
+		return pet;
+	}
+
+	@Override
+	public boolean deletePet(int id) {
+		boolean delete = false;
+		Pet pet = em.find(Pet.class, id);
+		if (pet != null) {
+            em.remove(pet);
+        }        delete = ! em.contains(pet);
+        
+		
+		return delete;
+		
+		
+	}
+
+	@Override
+	public Pet modifyPet(int id) {
+		
+		return null;
+	}
 
 }

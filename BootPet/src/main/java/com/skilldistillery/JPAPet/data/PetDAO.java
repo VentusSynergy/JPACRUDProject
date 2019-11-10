@@ -9,7 +9,11 @@ public interface PetDAO {
 	Pet findById(int id);
 
 	List<Pet> findAll();
-	
-	
+
+	Pet newPet(Pet pet);
+
+	boolean deletePet(int id);
+
+	Pet modifyPet(int id);
 
 }
