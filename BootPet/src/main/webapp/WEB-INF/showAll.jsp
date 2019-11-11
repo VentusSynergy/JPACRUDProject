@@ -16,13 +16,21 @@
 </head>
 <body>
 	<h6>
-		<a href="/">Home</a>
+		<a href="/">Home</a>	<a href="createPetPage.do"><em>   Add pet </em></a>	<form action="searchPage.do" method="GET">
+		<select name="species">
+			<option value="Dog">Dog</option>
+			<option value="Cat">Cat</option>
+			<option value="Rabbit">Rabbit</option>
+			<option value="Rat">Rat</option>
+		</select> <input type="submit" value="Search">
+	</form>
+		
 	</h6>
 
 	<c:choose>
 		<c:when test="${! empty pet}">
 			<c:forEach items="${pet}" var="pet">
-				<a href="showPet.do?pets=${pet.id}"><em> ${pet.name}</em></a>
+				<a href="showPet.do?pets=${pet.id}"><em>ID: ${pet.id}<br>${pet.name}</em></a>
 				<hr>
 			</c:forEach>
 		</c:when>
@@ -40,14 +48,6 @@
 			required="required" /> <input type="submit" value="modify" />
 	</form>
 
-	<form action="searchPage.do" method="GET">
-		<select name="species">
-			<option value="Dog">Dog</option>
-			<option value="Cat">Cat</option>
-			<option value="Rabbit">Rabbit</option>
-			<option value="Rat">Rat</option>
-		</select> <input type="submit" value="Search">
-	</form>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>

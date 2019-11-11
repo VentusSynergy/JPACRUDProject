@@ -28,7 +28,6 @@
 
 	</form>
 	<a href="showAll.do"><em> View all </em></a>
-	<a href="createPetPage.do"><em> Add pet </em></a>
 
 
 
