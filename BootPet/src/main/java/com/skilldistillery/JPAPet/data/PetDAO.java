@@ -14,6 +14,8 @@ public interface PetDAO {
 
 	boolean deletePet(int id);
 
-	Pet modifyPet(int id, Pet pet);
+	Pet modifyPet(Pet pet);
+	
+	List<Pet> search(String input);
 
 }

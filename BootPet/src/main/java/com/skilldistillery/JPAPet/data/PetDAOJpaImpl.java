@@ -51,12 +51,24 @@ public class PetDAOJpaImpl implements PetDAO {
 	}
 
 	@Override
-	public Pet modifyPet(int id ,Pet pet) {
-		Pet mod = em.find(Pet.class, id);
+	public Pet modifyPet(Pet pet) {
+		Pet mod = em.find(Pet.class, pet.getId());
+		System.out.println(mod.toString());
 		mod.setHealth(pet.getHealth());
 		
 		
 		return mod;
+	}
+
+	@Override
+	public List<Pet> search(String input) {
+		System.out.println("input: " +input);
+		String sqlText = "SELECT pet from Pet pet where species = :bind";
+		List<Pet> result = em.createQuery(sqlText, Pet.class).setParameter("bind", input).getResultList();
+		for (Pet pet : result) {
+			System.out.println(pet);
+		}
+		return result;
 	}
 
 }

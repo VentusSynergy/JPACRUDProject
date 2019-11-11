@@ -26,30 +26,29 @@
 				<p>
 				<p>
 					Species: <br>${pet.species}
-
 				<p>
 					Description: <br>${pet.description}
 				</p>
 
 				<p>
 				<form action="change.do" method="GET">
-					<input type="hidden" name="name" placeholder="enter name"
-						required="required" value="${pet.name}" /><br><input
-						type="hidden" name="species" placeholder="species"
-						required="required" value="${pet.species}" /><br><input
-						type="hidden" name="age" min="0" max="150" placeholder="age"
-						required="required" value="${pet.age}" /><br>
-					<input type="hidden" name="gender" placeholder="gender"
-						required="required" value="${pet.gender}" /><br><input
-						type="hidden" name="color" placeholder="color" required="required"
-						value="${pet.color}" /><br><input type="hidden"
-						name="state" placeholder="state" required="required"
-						value="${pet.state}" /><br><input
-						type="hidden" name="description" placeholder="health"
-						required="required" value="${pet.description}" /><br>
-					<input type="text" name="health"
-						placeholder="${pet.health }" required="required" /> <br>
-						<input class="btn btn-warning" type="submit" value="change" />
+					<input type="text" name="health" placeholder="${pet.health }"
+						required="required" /> <input type="hidden" name="id"
+						required="required" value="${pet.id}" /> <input type="hidden"
+						name="name" placeholder="enter name" required="required"
+						value="${pet.name}" /><br> <input type="hidden"
+						name="species" placeholder="species" required="required"
+						value="${pet.species}" /><br> <input type="hidden"
+						name="age" min="0" max="150" placeholder="age" required="required"
+						value="${pet.age}" /><br> <input type="hidden" name="gender"
+						placeholder="gender" required="required" value="${pet.gender}" /><br>
+					<input type="hidden" name="color" placeholder="color"
+						required="required" value="${pet.color}" /><br> <input
+						type="hidden" name="state" placeholder="state" required="required"
+						value="${pet.state}" /><br> <input type="hidden"
+						name="description" placeholder="health" required="required"
+						value="${pet.description}" /><br> <br> <input
+						class="btn btn-warning" type="submit" value="change" />
 				</form>
 			</div>
 

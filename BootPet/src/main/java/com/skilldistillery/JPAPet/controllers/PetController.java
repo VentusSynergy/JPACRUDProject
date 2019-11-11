@@ -28,7 +28,6 @@ public class PetController {
 	public String index(Model model) {
 		// TODO : Retrieve film list, add it to the model.
 		List<Pet> pet = dao.findAll();
-		System.out.println(pet);
 		model.addAttribute("pet", pet);
 		return "WEB-INF/showAll.jsp";
 	}
@@ -73,9 +72,11 @@ public class PetController {
 
 	@RequestMapping(path = "change.do", method = RequestMethod.GET)
 	public ModelAndView modify(Pet pet) {
-		int val = pet.getId();
+		System.out.println("in cont");
+		System.out.println(pet);
 		ModelAndView mv = new ModelAndView();
-		Pet update = dao.modifyPet(val, pet);
+		Pet update = dao.modifyPet(pet);
+		System.out.println(update.toString());
 		mv.addObject("update", update);
 		mv.setViewName("/");
 
@@ -91,5 +92,15 @@ public class PetController {
 		mv.setViewName("WEB-INF/modify.jsp");
 		return mv;
 	}
+	@RequestMapping(path = "searchPage.do", method = RequestMethod.GET)
+	public ModelAndView search(String species) {
+		ModelAndView mv = new ModelAndView();
+		List<Pet> pet = dao.search(species);
+		mv.addObject("pet",pet);
+		mv.setViewName("WEB-INF/searchResult.jsp");
+		return mv;
+	}
+	
+	
 
 }
