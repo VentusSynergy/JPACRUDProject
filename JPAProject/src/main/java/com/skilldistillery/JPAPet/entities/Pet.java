@@ -25,7 +25,6 @@ public class Pet {
 	public Pet() {
 		super();
 	}
-	
 
 	public Pet(String name, String species, int age, String state, String description, String gender, String color,
 			String health) {
@@ -39,7 +38,6 @@ public class Pet {
 		this.color = color;
 		this.health = health;
 	}
-
 
 	public int getId() {
 		return id;

@@ -21,10 +21,19 @@ USE `petdb` ;
 DROP TABLE IF EXISTS `pet` ;
 
 CREATE TABLE IF NOT EXISTS `pet` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
+  `species` VARCHAR(45) NULL,
+  `age` INT NULL,
+  `location_state` VARCHAR(45) NULL,
+  `description` VARCHAR(150) NULL,
+  `gender` VARCHAR(1) NULL,
+  `color` VARCHAR(30) NULL,
+  `health` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8;
 
 SET SQL_MODE = '';
 DROP USER IF EXISTS vent@localhost;
@@ -42,7 +51,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `petdb`;
-INSERT INTO `pet` (`id`, `name`) VALUES (1, 'Luna');
+INSERT INTO `pet` (`id`, `name`, `species`, `age`, `location_state`, `description`, `gender`, `color`, `health`) VALUES (1, 'Luna', 'Rabbit', 1, 'Colorado', 'A rather curious Holland Lop', 'F', 'Black', 'Healthy');
+INSERT INTO `pet` (`id`, `name`, `species`, `age`, `location_state`, `description`, `gender`, `color`, `health`) VALUES (2, 'Cosmos', 'Dog', 5, 'Florida', 'A sweet Great Dane who wishes to please', 'M', 'Black w/ gray spots', 'Healthy');
+INSERT INTO `pet` (`id`, `name`, `species`, `age`, `location_state`, `description`, `gender`, `color`, `health`) VALUES (3, 'Henry', 'Cat', 3, 'California', 'A playful cat who can get really aggressive ', 'M', 'Brown', 'Sick');
+INSERT INTO `pet` (`id`, `name`, `species`, `age`, `location_state`, `description`, `gender`, `color`, `health`) VALUES (4, 'Katana', 'Dog', 8, 'Florida', 'Katana is a very friendly Great Dane who is a very good girl', 'F', 'Harlequin', 'Severely sick');
+INSERT INTO `pet` (`id`, `name`, `species`, `age`, `location_state`, `description`, `gender`, `color`, `health`) VALUES (5, 'Snow', 'Rat', 4, 'Colorado', 'Very skiddish rat who loves to hide', 'M', 'White', 'Sick');
 
 COMMIT;
 
